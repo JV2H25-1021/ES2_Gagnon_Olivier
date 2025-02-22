@@ -15,12 +15,12 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Accélérer",
-                    "type": "Value",
+                    "name": "Accelerer",
+                    "type": "Button",
                     "id": "015a4d5d-bbf6-456f-b0fa-58bcf6114311",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press(behavior=2)",
                     "initialStateCheck": true
                 }
             ],
@@ -32,7 +32,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Clavier",
-                    "action": "Accélérer",
+                    "action": "Accelerer",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

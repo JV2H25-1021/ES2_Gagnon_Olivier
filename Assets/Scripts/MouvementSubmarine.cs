@@ -11,7 +11,6 @@ public class MouvementSubmarine : MonoBehaviour
     private Rigidbody _rb;
     private Vector3 directionInput;
     private Animator _animator;
-   [SerializeField] private float _modifierAnimTranslation;
    [SerializeField] private float _vitesseSubmarine;
 
 
@@ -22,27 +21,24 @@ public class MouvementSubmarine : MonoBehaviour
         _animator = GetComponent<Animator>();
         
     }
-    void OnMouvement(InputValue direction)
+    void OnMouvement(InputValue directionBase)
     {
-        Vector2 directionAvecVitesse = direction.Get<Vector2>() * _vitesseSubmarine;
+        Vector2 directionAvecVitesse = directionBase.Get<Vector2>() * _vitesseSubmarine;
         directionInput = new Vector3(0f, directionAvecVitesse.y, directionAvecVitesse.x);
+        _animator.SetFloat("DeplacementZ", directionInput.magnitude);
+
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     void FixedUpdate()
     {
-        Vector3 mouvement = directionInput;
+        Vector3 Mouvement = directionInput;
 
-        _rb.AddForce(mouvement, ForceMode.VelocityChange);
+        _rb.AddForce(Mouvement, ForceMode.VelocityChange);
         Vector3 vitesseSurPlane = new Vector3(0f, _rb.velocity.y, _rb.velocity.x);
-
-        _animator.SetFloat("Vitesse", vitesseSurPlane.magnitude * _modifierAnimTranslation);
-        _animator.SetFloat("Deplacement", vitesseSurPlane.magnitude);
+        _animator.SetFloat("DeplacementY", vitesseSurPlane.magnitude);
 
 
     }
+
 }

@@ -1839,7 +1839,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Clavier
-  m_DefaultActionMap: Submarine
+  m_DefaultActionMap: 00465d0b-8025-4e6e-87b1-d70e34e1b83b
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &8632670369948054860
@@ -1854,7 +1854,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12707e55677dada4c9baf54b59b242c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _modifierAnimTranslation: 0
   _vitesseSubmarine: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
