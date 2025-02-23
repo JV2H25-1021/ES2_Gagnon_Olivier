@@ -29,7 +29,15 @@ public class MouvementSubmarine : MonoBehaviour
         Vector2 directionAvecVitesse = directionBase.Get<Vector2>() * _vitesseSubmarine;
         directionInput = new Vector3(0f, directionAvecVitesse.y, directionAvecVitesse.x);
         _animator.SetFloat("DeplacementZ", directionInput.magnitude);
-     
+        if (directionInput.z < 0)
+        {
+            sensInverse = true;
+        }
+        else
+        {
+            sensInverse = false;
+        }
+
 
     }
 
@@ -43,42 +51,33 @@ public class MouvementSubmarine : MonoBehaviour
 
         AnimationHelice();
     }
+
+    void AnimationHelice()
+    {
+        if (sensInverse)
+        {
+            _animator.SetFloat("Helice", -_vitesseSubmarine);
+        }
+        else
+        {
+            _animator.SetFloat("Helice", _vitesseSubmarine);
+
+        }
+    }
     void OnAccelerer(InputValue bouton)
     {
         if (bouton.isPressed)
         {
             _vitesseSubmarine = 2f;
-            _animator.SetFloat("Helice", 2f);
 
 
         }
-        else
+        else 
         {
             _vitesseSubmarine = 1f;
-            _animator.SetFloat("Helice", 1f);
 
         }
 
 
     }
-    void AnimationHelice()
-    {
-        if (directionInput.z < 0)
-        {
-            sensInverse = true;
-        }
-        else
-        {
-            sensInverse = false;
-        }
-        if (sensInverse)
-        {
-            _animator.SetFloat("Helice", -1f);
-        }
-        else
-        {
-            _animator.SetFloat("Helice", 1f);
-
-        }
-    }
-    }
+}
