@@ -49,18 +49,36 @@ public class MouvementSubmarine : MonoBehaviour
         Vector3 vitesseSurPlane = new Vector3(0f, _rb.velocity.y, _rb.velocity.x);
         _animator.SetFloat("DeplacementY", vitesseSurPlane.magnitude);
 
-        AnimationHelice();
+        AnimationHeliceZ();
+        AnimationHeliceY();
     }
 
-    void AnimationHelice()
+    void AnimationHeliceZ()
     {
         if (sensInverse)
         {
-            _animator.SetFloat("Helice", -_vitesseSubmarine);
+            _animator.SetFloat("HeliceZ", -_vitesseSubmarine);
+
         }
         else
         {
-            _animator.SetFloat("Helice", _vitesseSubmarine);
+            _animator.SetFloat("HeliceZ", _vitesseSubmarine);
+
+
+        }
+    }
+
+    void AnimationHeliceY()
+    {
+        if (sensInverse)
+        {
+            _animator.SetFloat("HeliceY", -_vitesseSubmarine);
+
+        }
+        else
+        {
+            _animator.SetFloat("HeliceY", _vitesseSubmarine);
+
 
         }
     }
