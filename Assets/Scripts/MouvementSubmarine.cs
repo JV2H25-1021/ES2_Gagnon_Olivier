@@ -12,7 +12,6 @@ public class MouvementSubmarine : MonoBehaviour
     private Vector3 directionInput;
     private Animator _animator;
    [SerializeField] private float _vitesseSubmarine;
-   
     private bool sensInverse = false;
 
 
@@ -21,6 +20,7 @@ public class MouvementSubmarine : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
+     
 
 
     }
@@ -51,6 +51,7 @@ public class MouvementSubmarine : MonoBehaviour
 
         AnimationHeliceZ();
         AnimationHeliceY();
+        AlternerHelice();
     }
 
     void AnimationHeliceZ()
@@ -97,5 +98,16 @@ public class MouvementSubmarine : MonoBehaviour
         }
 
 
+    }
+    void AlternerHelice()
+    {
+        if(directionInput.z > 0)
+        {
+            _animator.SetFloat("DeplacementY", 0);
+        }
+        else if(directionInput.y > 0)
+        {
+            _animator.SetFloat("DeplacementZ", 0);
+        }
     }
 }
