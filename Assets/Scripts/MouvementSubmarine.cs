@@ -13,6 +13,7 @@ public class MouvementSubmarine : MonoBehaviour
     private Animator _animator;
    [SerializeField] private float _vitesseSubmarine;
     private bool sensInverse = false;
+    private float speed = 1f;
 
 
     // Start is called before the first frame update
@@ -28,7 +29,6 @@ public class MouvementSubmarine : MonoBehaviour
     {
         Vector2 directionAvecVitesse = directionBase.Get<Vector2>() * _vitesseSubmarine;
         directionInput = new Vector3(0f, directionAvecVitesse.y, directionAvecVitesse.x);
-        _animator.SetFloat("DeplacementZ", directionInput.magnitude);
         if (directionInput.z < 0)
         {
             sensInverse = true;
@@ -46,12 +46,14 @@ public class MouvementSubmarine : MonoBehaviour
         Vector3 Mouvement = directionInput;
 
         _rb.AddForce(Mouvement, ForceMode.VelocityChange);
-        Vector3 vitesseSurPlane = new Vector3(0f, _rb.velocity.y, _rb.velocity.x);
-        _animator.SetFloat("DeplacementY", vitesseSurPlane.magnitude);
+        Vector3 vitesseSurPlaneY = new Vector3(0f, _rb.velocity.y, _rb.velocity.x);
+        _animator.SetFloat("DeplacementY", vitesseSurPlaneY.magnitude*speed);
+
+        Vector3 vitesseSurPlaneZ = new Vector3(0f, _rb.velocity.x, _rb.velocity.z);
+        _animator.SetFloat("DeplacementZ", vitesseSurPlaneZ.magnitude *speed);
 
         AnimationHeliceZ();
         AnimationHeliceY();
-        AlternerHelice();
     }
 
     void AnimationHeliceZ()
@@ -89,25 +91,11 @@ public class MouvementSubmarine : MonoBehaviour
         {
             _vitesseSubmarine = 2f;
 
-
         }
         else 
         {
             _vitesseSubmarine = 1f;
 
         }
-
-
-    }
-    void AlternerHelice()
-    {
-        if(directionInput.z > 0)
-        {
-            _animator.SetFloat("DeplacementY", 0);
-        }
-        else if(directionInput.y > 0)
-        {
-            _animator.SetFloat("DeplacementZ", 0);
-        }
-    }
+    } 
 }
