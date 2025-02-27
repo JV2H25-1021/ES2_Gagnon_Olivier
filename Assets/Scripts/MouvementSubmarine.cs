@@ -52,9 +52,8 @@ public class MouvementSubmarine : MonoBehaviour
 
         Vector3 vitesseSurPlaneZ = new Vector3(0f, _rb.velocity.x, _rb.velocity.z);
         _animator.SetFloat("DeplacementZ", vitesseSurPlaneZ.magnitude *speed);
-        _rb.AddForce(Mouvement, ForceMode.VelocityChange);
-        Vector3 vitesseSurPlaneZ = new Vector3(0f, _rb.velocity.y, _rb.velocity.x);
-        _animator.SetFloat("DeplacementZ", vitesseSurPlaneZ.magnitude * speed);
+       
+      
 
 
         AnimationHeliceZ();
